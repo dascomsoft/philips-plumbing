@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Project Gallery | Philip's Plumbing Johannesburg</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * { font-family: 'Inter', system-ui, sans-serif; }
+        .badge-gold { background: #fbbf24; color: #0a0f1e; padding: 0.25rem 1rem; border-radius: 40px; font-weight: 700; font-size: 0.75rem; display: inline-block; }
+        .mobile-menu { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: #0f172a; z-index: 40; transform: translateX(-100%); transition: transform 0.3s; display: flex; flex-direction: column; justify-content: center; align-items: center; }
+        .mobile-menu.menu-open { transform: translateX(0); }
+        .mobile-menu a { font-size: 1.5rem; font-weight: 700; margin: 1rem 0; color: white; }
+        .mobile-menu .social-buttons { display: flex; gap: 1.5rem; margin-top: 2rem; }
+        .mobile-menu .social-buttons a { background: #fbbf24; color: #0a0f1e; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; }
+        .gallery-item { background: #0f172a; border-radius: 1rem; overflow: hidden; border: 1px solid #fbbf2430; cursor: pointer; transition: all 0.3s; }
+        .gallery-item:hover { border-color: #fbbf24; transform: scale(1.02); }
+        .gallery-item img { width: 100%; height: 200px; object-fit: cover; }
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); align-items: center; justify-content: center; z-index: 9999; }
+        .modal.active { display: flex; }
+        .modal-content { max-width: 90vw; max-height: 85vh; background: #0f172a; padding: 1rem; border-radius: 1.5rem; border: 2px solid #fbbf24; }
+        .modal img { max-height: 60vh; border-radius: 1rem; }
+    </style>
+</head>
+<body class="bg-[#0a0f1e] text-white">
+
+<!-- MODAL -->
+<div id="imageModal" class="modal" onclick="if(event.target===this) closeModal()">
+    <div class="modal-content relative">
+        <button onclick="closeModal()" class="absolute top-2 right-3 text-3xl text-yellow-400 hover:text-white z-50">&times;</button>
+        <img id="modalImage" src="" alt="work detail" class="w-full">
+        <div id="modalCaption" class="text-center text-sm text-gray-300 mt-3 px-2"></div>
+    </div>
+</div>
+
+<!-- Mobile call bar -->
+<div class="fixed bottom-0 left-0 w-full bg-[#0f172a] py-2 px-4 flex justify-between items-center z-50 md:hidden border-t border-yellow-500/40">
+    <span class="text-xs font-bold"><i class="fas fa-bolt text-yellow-400"></i> 24/7</span>
+    <div class="flex gap-2">
+        <a href="tel:+27664774325" class="bg-yellow-400 text-[#0a0f1e] px-4 py-1.5 rounded-full text-xs font-bold"><i class="fas fa-phone-alt"></i> CALL</a>
+        <a href="https://wa.me/27664774325" target="_blank" class="bg-yellow-400 text-[#0a0f1e] px-4 py-1.5 rounded-full text-xs font-bold"><i class="fab fa-whatsapp"></i> CHAT</a>
+    </div>
+</div>
+
+<!-- HEADER -->
+<header class="bg-[#0f172a] border-b border-yellow-500/20 py-2 sticky top-0 z-40">
+    <div class="container mx-auto px-4 flex justify-between items-center">
+        <div class="flex items-center gap-2">
+            <div class="w-10 h-10 bg-yellow-400 rounded-xl flex items-center justify-center text-[#0a0f1e] text-xl"><i class="fas fa-wrench"></i></div>
+            <div>
+                <span class="font-black text-lg tracking-tight text-white">PHILIP'S</span>
+                <span class="block text-[0.65rem] font-medium text-yellow-300/70">plumbing • jhb</span>
+            </div>
+        </div>
+        <nav class="hidden md:flex items-center gap-4 text-sm font-semibold text-gray-200">
+            <a href="index.html" class="hover:text-yellow-400">Home</a>
+            <a href="services.html" class="hover:text-yellow-400">Services</a>
+            <a href="about.html" class="hover:text-yellow-400">About</a>
+            <a href="gallery.html" class="text-yellow-400">Projects</a>
+            <a href="contact.html" class="hover:text-yellow-400">Contact</a>
+        </nav>
+        <div class="hidden md:block">
+            <a href="tel:+27664774325" class="text-yellow-400 font-bold text-sm">066 477 4325</a>
+        </div>
+        <button id="menuBtn" class="block md:hidden text-2xl text-yellow-400 z-50 relative">
+            <i class="fas fa-bars"></i>
+        </button>
+    </div>
+
+    <div id="mobileMenu" class="mobile-menu">
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="about.html">About</a>
+        <a href="gallery.html">Projects</a>
+        <a href="contact.html">Contact</a>
+        <div class="social-buttons">
+            <a href="tel:+27664774325"><i class="fas fa-phone-alt"></i></a>
+            <a href="https://wa.me/27664774325" target="_blank"><i class="fab fa-whatsapp"></i></a>
+        </div>
+    </div>
+</header>
+
+<!-- PAGE HEADER -->
+<section class="bg-[#0f172a] py-10 border-b border-yellow-500/20">
+    <div class="container mx-auto px-4 text-center">
+        <h1 class="text-3xl md:text-5xl font-bold text-white mb-3">Our Project Gallery</h1>
+        <p class="text-gray-400 max-w-2xl mx-auto text-sm">Click on any image to see details of our work</p>
+    </div>
+</section>
+
+<!-- GALLERY GRID -->
+<section class="py-16">
+    <div class="container mx-auto px-4">
+        <!-- Geyser Installations -->
+        <h2 class="text-2xl font-bold text-yellow-400 mb-4" data-aos="fade-right"><i class="fas fa-fire mr-2"></i> Geyser Installations & Repairs</h2>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-10">
+            <div class="gallery-item" onclick="openModal('images/Geyser-Installations.jpg','Complete geyser installation with safety valves and expansion vessel. PIRB registered.')"><img src="images/Geyser-Installations.jpg" alt="Geyser install"><div class="p-2 text-xs text-center bg-[#0f172a]">New geyser install</div></div>
+            <div class="gallery-item" onclick="openModal('images/Geyser_Insterllation.New_Installation.Extra_Pics1.Additional_pics.jpg','Geyser installation with copper piping and isolation valves.')"><img src="images/Geyser_Insterllation.New_Installation.Extra_Pics1.Additional_pics.jpg" alt="Geyser"><div class="p-2 text-xs text-center">Geyser with copper</div></div>
+            <div class="gallery-item" onclick="openModal('images/Geyser_Insterllation.New_Installation.Picture_of_New_System__full_view_.jpg','Complete geyser system – full view with pressure control.')"><img src="images/Geyser_Insterllation.New_Installation.Picture_of_New_System__full_view_.jpg" alt="Geyser system"><div class="p-2 text-xs text-center">Full system view</div></div>
+            <div class="gallery-item" onclick="openModal('images/Geyser-Servicing.jpg','Geyser servicing and maintenance – checking elements and thermostat.')"><img src="images/Geyser-Servicing.jpg" alt="Geyser service"><div class="p-2 text-xs text-center">Geyser service</div></div>
+        </div>
+
+        <!-- Leak Detection & Repairs -->
+        <h2 class="text-2xl font-bold text-yellow-400 mb-4" data-aos="fade-right"><i class="fas fa-search mr-2"></i> Leak Detection & Repairs</h2>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-10">
+            <div class="gallery-item" onclick="openModal('images/Leak-Detection.jpg','Using acoustic leak detection equipment to find hidden pipe leaks without breaking walls.')"><img src="images/Leak-Detection.jpg" alt="Leak detection"><div class="p-2 text-xs text-center">Acoustic detection</div></div>
+            <div class="gallery-item" onclick="openModal('images/Maintenance_Repair.Aditional_images3.Image_of_work.jpg','Pipe repair work – fixing a burst pipe with professional fittings.')"><img src="images/Maintenance_Repair.Aditional_images3.Image_of_work.jpg" alt="Pipe repair"><div class="p-2 text-xs text-center">Pipe repair</div></div>
+            <div class="gallery-item" onclick="openModal('images/Maintenance-Work.jpg','Maintenance work – checking and repairing plumbing system.')"><img src="images/Maintenance-Work.jpg" alt="Maintenance"><div class="p-2 text-xs text-center">Maintenance</div></div>
+            <div class="gallery-item" onclick="openModal('images/Maintenance.jpg','General plumbing maintenance and inspection.')"><img src="images/Maintenance.jpg" alt="Maintenance"><div class="p-2 text-xs text-center">Inspection</div></div>
+        </div>
+
+        <!-- Bathroom & Vanity -->
+        <h2 class="text-2xl font-bold text-yellow-400 mb-4" data-aos="fade-right"><i class="fas fa-bath mr-2"></i> Bathroom & Vanity Installations</h2>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-10">
+            <div class="gallery-item" onclick="openModal('images/Vanity-Sinks.jpg','Custom vanity unit installation with modern sink and mixer tap.')"><img src="images/Vanity-Sinks.jpg" alt="Vanity"><div class="p-2 text-xs text-center">Vanity installation</div></div>
+            <div class="gallery-item" onclick="openModal('images/Vanity.jpg','Luxury vanity with stone top and soft-close doors.')"><img src="images/Vanity.jpg" alt="Vanity"><div class="p-2 text-xs text-center">Luxury vanity</div></div>
+            <div class="gallery-item" onclick="openModal('images/Shower.jpg','Shower installation with thermostatic mixer and rainfall showerhead.')"><img src="images/Shower.jpg" alt="Shower"><div class="p-2 text-xs text-center">Shower install</div></div>
+            <div class="gallery-item" onclick="openModal('images/Toilet-Plumbing.jpg','Wall-hung toilet installation with concealed cistern.')"><img src="images/Toilet-Plumbing.jpg" alt="Toilet"><div class="p-2 text-xs text-center">Toilet install</div></div>
+        </div>
+
+        <!-- Water Systems & Commercial -->
+        <h2 class="text-2xl font-bold text-yellow-400 mb-4" data-aos="fade-right"><i class="fas fa-water mr-2"></i> Water Systems & Commercial</h2>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-10">
+            <div class="gallery-item" onclick="openModal('images/Water-Systems.jpg','Complete water system installation – Jojo tank with pressure pump.')"><img src="images/Water-Systems.jpg" alt="Water system"><div class="p-2 text-xs text-center">Backup water system</div></div>
+            <div class="gallery-item" onclick="openModal('images/commercial-plumbing.jpeg','Commercial plumbing installation for retail store.')"><img src="images/commercial-plumbing.jpeg" alt="Commercial"><div class="p-2 text-xs text-center">Commercial plumbing</div></div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="py-12 bg-[#0f172a]">
+    <div class="container mx-auto px-4 text-center">
+        <h2 class="text-2xl font-bold mb-3">Ready to Start Your Project?</h2>
+        <p class="text-gray-400 text-sm mb-5">Get a free quote within minutes</p>
+        <a href="https://wa.me/27664774325" target="_blank" class="inline-block bg-yellow-400 hover:bg-yellow-300 text-[#0a0f1e] font-bold px-8 py-4 rounded-full text-lg transition"><i class="fab fa-whatsapp mr-2"></i> REQUEST QUOTE</a>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-[#0a0f1e] border-t border-yellow-500/20 py-10">
+    <div class="container mx-auto px-4">
+        <div class="grid md:grid-cols-4 gap-8 text-sm">
+            <div><div class="flex items-center gap-2 mb-3"><div class="w-8 h-8 bg-yellow-400 rounded-lg flex items-center justify-center text-[#0a0f1e]"><i class="fas fa-wrench text-sm"></i></div><span class="font-black text-white">PHILIP'S PLUMBING</span></div><p class="text-gray-400 text-xs">PIRB-registered, family-owned emergency plumbing in Johannesburg since 2013.</p></div>
+            <div><h5 class="font-bold text-white mb-3 text-sm">Quick Links</h5><ul class="space-y-2 text-xs text-gray-400"><li><a href="index.html">Home</a></li><li><a href="services.html">Services</a></li><li><a href="about.html">About</a></li><li><a href="gallery.html">Gallery</a></li></ul></div>
+            <div><h5 class="font-bold text-white mb-3 text-sm">Service Areas</h5><ul class="space-y-2 text-xs text-gray-400"><li>Johannesburg</li><li>Sandton</li><li>Midrand</li><li>Randburg</li></ul></div>
+            <div><h5 class="font-bold text-white mb-3 text-sm">Contact</h5><p class="text-xs text-gray-400 mb-2"><i class="fas fa-phone-alt text-yellow-400 mr-2"></i> <a href="tel:+27664774325">066 477 4325</a></p><p class="text-xs text-gray-400"><i class="fab fa-whatsapp text-yellow-400 mr-2"></i> <a href="https://wa.me/27664774325" target="_blank">WhatsApp 24/7</a></p></div>
+        </div>
+        <div class="border-t border-yellow-500/20 mt-8 pt-5 text-center text-xs text-gray-400"><p>© 2026 Philip's Plumbing – All Rights Reserved | Designed By Dascomsoft</p></div>
+    </div>
+</footer>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init({ once: true, duration: 600 });
+    
+    function openModal(imgSrc, desc) {
+        document.getElementById('modalImage').src = imgSrc;
+        document.getElementById('modalCaption').innerText = desc;
+        document.getElementById('imageModal').classList.add('active');
+    }
+    function closeModal() {
+        document.getElementById('imageModal').classList.remove('active');
+    }
+    
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    menuBtn.addEventListener('click', function() {
+        const isOpen = mobileMenu.classList.contains('menu-open');
+        mobileMenu.classList.toggle('menu-open');
+        menuBtn.innerHTML = isOpen ? '<i class="fas fa-bars"></i>' : '<i class="fas fa-times"></i>';
+    });
+    
+    document.querySelectorAll('.mobile-menu a').forEach(link => {
+        link.addEventListener('click', function() {
+            mobileMenu.classList.remove('menu-open');
+            menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+        });
+    });
+</script>
+</body>
+</html>

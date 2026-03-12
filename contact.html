@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Contact Us | Philip's Plumbing Johannesburg</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * { font-family: 'Inter', system-ui, sans-serif; }
+        .badge-gold { background: #fbbf24; color: #0a0f1e; padding: 0.25rem 1rem; border-radius: 40px; font-weight: 700; font-size: 0.75rem; display: inline-block; }
+        .mobile-menu { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: #0f172a; z-index: 40; transform: translateX(-100%); transition: transform 0.3s; display: flex; flex-direction: column; justify-content: center; align-items: center; }
+        .mobile-menu.menu-open { transform: translateX(0); }
+        .mobile-menu a { font-size: 1.5rem; font-weight: 700; margin: 1rem 0; color: white; }
+        .mobile-menu .social-buttons { display: flex; gap: 1.5rem; margin-top: 2rem; }
+        .mobile-menu .social-buttons a { background: #fbbf24; color: #0a0f1e; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; }
+        .contact-card { background: #0f172a; padding: 2rem; border-radius: 1.5rem; border: 1px solid #fbbf2430; text-align: center; transition: all 0.3s; }
+        .contact-card:hover { border-color: #fbbf24; transform: translateY(-5px); }
+    </style>
+</head>
+<body class="bg-[#0a0f1e] text-white">
+
+<!-- Mobile call bar -->
+<div class="fixed bottom-0 left-0 w-full bg-[#0f172a] py-2 px-4 flex justify-between items-center z-50 md:hidden border-t border-yellow-500/40">
+    <span class="text-xs font-bold"><i class="fas fa-bolt text-yellow-400"></i> 24/7</span>
+    <div class="flex gap-2">
+        <a href="tel:+27664774325" class="bg-yellow-400 text-[#0a0f1e] px-4 py-1.5 rounded-full text-xs font-bold"><i class="fas fa-phone-alt"></i> CALL</a>
+        <a href="https://wa.me/27664774325" target="_blank" class="bg-yellow-400 text-[#0a0f1e] px-4 py-1.5 rounded-full text-xs font-bold"><i class="fab fa-whatsapp"></i> CHAT</a>
+    </div>
+</div>
+
+<!-- HEADER -->
+<header class="bg-[#0f172a] border-b border-yellow-500/20 py-2 sticky top-0 z-40">
+    <div class="container mx-auto px-4 flex justify-between items-center">
+        <div class="flex items-center gap-2">
+            <div class="w-10 h-10 bg-yellow-400 rounded-xl flex items-center justify-center text-[#0a0f1e] text-xl"><i class="fas fa-wrench"></i></div>
+            <div>
+                <span class="font-black text-lg tracking-tight text-white">PHILIP'S</span>
+                <span class="block text-[0.65rem] font-medium text-yellow-300/70">plumbing • jhb</span>
+            </div>
+        </div>
+        <nav class="hidden md:flex items-center gap-4 text-sm font-semibold text-gray-200">
+            <a href="index.html" class="hover:text-yellow-400">Home</a>
+            <a href="services.html" class="hover:text-yellow-400">Services</a>
+            <a href="about.html" class="hover:text-yellow-400">About</a>
+            <a href="gallery.html" class="hover:text-yellow-400">Projects</a>
+            <a href="contact.html" class="text-yellow-400">Contact</a>
+        </nav>
+        <div class="hidden md:block">
+            <a href="tel:+27664774325" class="text-yellow-400 font-bold text-sm">066 477 4325</a>
+        </div>
+        <button id="menuBtn" class="block md:hidden text-2xl text-yellow-400 z-50 relative">
+            <i class="fas fa-bars"></i>
+        </button>
+    </div>
+
+    <div id="mobileMenu" class="mobile-menu">
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="about.html">About</a>
+        <a href="gallery.html">Projects</a>
+        <a href="contact.html">Contact</a>
+        <div class="social-buttons">
+            <a href="tel:+27664774325"><i class="fas fa-phone-alt"></i></a>
+            <a href="https://wa.me/27664774325" target="_blank"><i class="fab fa-whatsapp"></i></a>
+        </div>
+    </div>
+</header>
+
+<!-- PAGE HEADER -->
+<section class="bg-[#0f172a] py-10 border-b border-yellow-500/20">
+    <div class="container mx-auto px-4 text-center">
+        <h1 class="text-3xl md:text-5xl font-bold text-white mb-3">Contact Us 24/7</h1>
+        <p class="text-gray-400 max-w-2xl mx-auto text-sm">Emergency? We respond within minutes – day or night</p>
+    </div>
+</section>
+
+<!-- CONTACT CARDS -->
+<section class="py-16">
+    <div class="container mx-auto px-4">
+        <div class="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto mb-10">
+            <!-- Call Card -->
+            <div class="contact-card" data-aos="fade-right">
+                <div class="w-20 h-20 bg-yellow-400/20 rounded-full flex items-center justify-center text-3xl text-yellow-400 mx-auto mb-4"><i class="fas fa-phone-alt"></i></div>
+                <h3 class="text-2xl font-bold mb-2">Call Us Now</h3>
+                <p class="text-gray-400 text-sm mb-4">Emergency? We're available 24/7</p>
+                <a href="tel:+27664774325" class="text-3xl md:text-4xl font-bold text-yellow-400 hover:underline">066 477 4325</a>
+                <p class="text-xs text-gray-500 mt-4">Free call • 30 min response*</p>
+            </div>
+
+            <!-- WhatsApp Card -->
+            <div class="contact-card" data-aos="fade-left">
+                <div class="w-20 h-20 bg-yellow-400/20 rounded-full flex items-center justify-center text-3xl text-yellow-400 mx-auto mb-4"><i class="fab fa-whatsapp"></i></div>
+                <h3 class="text-2xl font-bold mb-2">WhatsApp</h3>
+                <p class="text-gray-400 text-sm mb-4">Fastest way to get a quote</p>
+                <a href="https://wa.me/27664774325" target="_blank" class="text-2xl md:text-3xl font-bold text-yellow-400 hover:underline">Chat Now</a>
+                <p class="text-xs text-gray-500 mt-4">Usually replies within 2 minutes</p>
+            </div>
+        </div>
+
+        <!-- Quick Quote Form -->
+        <div class="max-w-2xl mx-auto bg-[#0f172a] p-6 md:p-8 rounded-2xl border border-yellow-500/30" data-aos="fade-up">
+            <h3 class="text-2xl font-bold text-center mb-2">⚡ Emergency Quote Request</h3>
+            <p class="text-gray-400 text-sm text-center mb-6">Send us the details and we'll respond on WhatsApp immediately</p>
+            
+            <form onsubmit="event.preventDefault(); window.open('https://wa.me/27664774325?text='+encodeURIComponent('*NEW EMERGENCY REQUEST*%0A%0A📋 *Name:* '+document.getElementById('fullName').value+'%0A📍 *Suburb:* '+document.getElementById('suburb').value+'%0A📞 *Phone:* '+document.getElementById('phone').value+'%0A🔧 *Problem:* '+document.getElementById('problem').value+'%0A⏰ *When:* '+document.getElementById('when').value), '_blank');">
+                <div class="grid md:grid-cols-2 gap-4 mb-4">
+                    <input id="fullName" type="text" placeholder="Your full name *" class="w-full px-4 py-3 rounded-lg bg-[#1e293b] border-0 text-white placeholder-gray-400 text-sm" required>
+                    <input id="phone" type="tel" placeholder="Your phone number" class="w-full px-4 py-3 rounded-lg bg-[#1e293b] border-0 text-white placeholder-gray-400 text-sm">
+                </div>
+                
+                <input id="suburb" type="text" placeholder="Your suburb (e.g. Sandton) *" class="w-full mb-4 px-4 py-3 rounded-lg bg-[#1e293b] border-0 text-white placeholder-gray-400 text-sm" required>
+                
+                <textarea id="problem" rows="3" placeholder="Describe the plumbing problem *" class="w-full mb-4 px-4 py-3 rounded-lg bg-[#1e293b] border-0 text-white placeholder-gray-400 text-sm" required></textarea>
+                
+                <select id="when" class="w-full mb-5 px-4 py-3 rounded-lg bg-[#1e293b] border-0 text-white text-sm">
+                    <option value="Immediately - emergency">Immediately - emergency</option>
+                    <option value="Today">Today</option>
+                    <option value="This week">This week</option>
+                    <option value="Just getting a quote">Just getting a quote</option>
+                </select>
+                
+                <button type="submit" class="w-full bg-yellow-400 hover:bg-yellow-300 text-[#0a0f1e] font-bold py-4 rounded-lg text-base transition"><i class="fab fa-whatsapp mr-2"></i> SEND VIA WHATSAPP</button>
+                <p class="text-center text-gray-500 text-xs mt-3">Free quote • No obligation</p>
+            </form>
+        </div>
+
+        <!-- Service Areas -->
+        <div class="mt-12 text-center">
+            <h3 class="text-xl font-bold mb-3">Areas We Serve</h3>
+            <div class="flex flex-wrap justify-center gap-2">
+                <span class="bg-[#1e293b] px-4 py-2 rounded-full text-xs border border-yellow-500/30">Johannesburg CBD</span>
+                <span class="bg-[#1e293b] px-4 py-2 rounded-full text-xs border border-yellow-500/30">Sandton</span>
+                <span class="bg-[#1e293b] px-4 py-2 rounded-full text-xs border border-yellow-500/30">Midrand</span>
+                <span class="bg-[#1e293b] px-4 py-2 rounded-full text-xs border border-yellow-500/30">Randburg</span>
+                <span class="bg-[#1e293b] px-4 py-2 rounded-full text-xs border border-yellow-500/30">Rosebank</span>
+                <span class="bg-[#1e293b] px-4 py-2 rounded-full text-xs border border-yellow-500/30">Fourways</span>
+                <span class="bg-[#1e293b] px-4 py-2 rounded-full text-xs border border-yellow-500/30">Bryanston</span>
+                <span class="bg-[#1e293b] px-4 py-2 rounded-full text-xs border border-yellow-500/30">Parkhurst</span>
+            </div>
+        </div>
+
+        <!-- Business Hours -->
+        <div class="mt-10 bg-[#0f172a] p-6 rounded-2xl max-w-2xl mx-auto">
+            <h3 class="text-xl font-bold text-center mb-4">Business Hours</h3>
+            <div class="grid grid-cols-2 gap-3 text-sm">
+                <div><span class="text-gray-400">Monday - Friday:</span></div><div class="text-right">24 hours</div>
+                <div><span class="text-gray-400">Saturday:</span></div><div class="text-right">24 hours</div>
+                <div><span class="text-gray-400">Sunday:</span></div><div class="text-right">24 hours</div>
+                <div><span class="text-gray-400">Public Holidays:</span></div><div class="text-right">24 hours</div>
+            </div>
+            <p class="text-center text-yellow-400 text-sm mt-4"><i class="fas fa-clock mr-2"></i> We never close – emergency service 24/7/365</p>
+        </div>
+    </div>
+</section>
+
+<!-- MAP SECTION (placeholder) -->
+<section class="py-8 bg-[#0f172a]">
+    <div class="container mx-auto px-4">
+        <div class="bg-[#1e293b] h-64 rounded-2xl flex items-center justify-center border border-yellow-500/30">
+            <div class="text-center">
+                <i class="fas fa-map-marked-alt text-4xl text-yellow-400 mb-3"></i>
+                <p class="text-gray-400">Serving all Johannesburg areas</p>
+                <p class="text-sm text-yellow-400">Call for exact location</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="py-12 bg-gradient-to-r from-yellow-600 to-yellow-400">
+    <div class="container mx-auto px-4 text-center">
+        <h2 class="text-2xl font-bold text-[#0a0f1e] mb-3">Don't Wait – We're Ready to Help</h2>
+        <a href="tel:+27664774325" class="inline-block bg-[#0a0f1e] hover:bg-black text-white font-bold px-8 py-4 rounded-full text-lg transition mr-3"><i class="fas fa-phone-alt mr-2"></i> CALL NOW</a>
+        <a href="https://wa.me/27664774325" target="_blank" class="inline-block bg-white hover:bg-gray-100 text-[#0a0f1e] font-bold px-8 py-4 rounded-full text-lg transition"><i class="fab fa-whatsapp mr-2"></i> WHATSAPP</a>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-[#0a0f1e] border-t border-yellow-500/20 py-10">
+    <div class="container mx-auto px-4">
+        <div class="grid md:grid-cols-4 gap-8 text-sm">
+            <div><div class="flex items-center gap-2 mb-3"><div class="w-8 h-8 bg-yellow-400 rounded-lg flex items-center justify-center text-[#0a0f1e]"><i class="fas fa-wrench text-sm"></i></div><span class="font-black text-white">PHILIP'S PLUMBING</span></div><p class="text-gray-400 text-xs">PIRB-registered, family-owned emergency plumbing in Johannesburg since 2013.</p></div>
+            <div><h5 class="font-bold text-white mb-3 text-sm">Quick Links</h5><ul class="space-y-2 text-xs text-gray-400"><li><a href="index.html">Home</a></li><li><a href="services.html">Services</a></li><li><a href="about.html">About</a></li><li><a href="gallery.html">Gallery</a></li></ul></div>
+            <div><h5 class="font-bold text-white mb-3 text-sm">Service Areas</h5><ul class="space-y-2 text-xs text-gray-400"><li>Johannesburg</li><li>Sandton</li><li>Midrand</li><li>Randburg</li></ul></div>
+            <div><h5 class="font-bold text-white mb-3 text-sm">Contact</h5><p class="text-xs text-gray-400 mb-2"><i class="fas fa-phone-alt text-yellow-400 mr-2"></i> <a href="tel:+27664774325">066 477 4325</a></p><p class="text-xs text-gray-400"><i class="fab fa-whatsapp text-yellow-400 mr-2"></i> <a href="https://wa.me/27664774325" target="_blank">WhatsApp 24/7</a></p></div>
+        </div>
+        <div class="border-t border-yellow-500/20 mt-8 pt-5 text-center text-xs text-gray-400"><p>© 2026 Philip's Plumbing – All Rights Reserved | Designed By Dascomsoft.</p></div>
+    </div>
+</footer>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init({ once: true, duration: 600 });
+    
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    menuBtn.addEventListener('click', function() {
+        const isOpen = mobileMenu.classList.contains('menu-open');
+        mobileMenu.classList.toggle('menu-open');
+        menuBtn.innerHTML = isOpen ? '<i class="fas fa-bars"></i>' : '<i class="fas fa-times"></i>';
+    });
+    
+    document.querySelectorAll('.mobile-menu a').forEach(link => {
+        link.addEventListener('click', function() {
+            mobileMenu.classList.remove('menu-open');
+            menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+        });
+    });
+</script>
+</body>
+</html>

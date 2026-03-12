@@ -1,446 +1,318 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Philip's Plumbing | 24/7 Joburg emergency plumbers</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Philip's Plumbing | 24/7 Emergency Plumbers Johannesburg</title>
     <!-- Tailwind + AOS + fonts -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-    <!-- Font Awesome 6 -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        * { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; }
-        .badge-gold { background: #fbbf24; color: #0a0f1e; padding: 0.25rem 1rem; border-radius: 40px; font-weight: 700; font-size: 0.8rem; display: inline-block; letter-spacing: 0.5px; }
-        .stat-card { background: #0f172a; border-left: 4px solid #fbbf24; border-radius: 1.5rem; padding: 1.5rem; box-shadow: 0 20px 30px -10px #00000055; color: white; }
-        .hover-lift:hover { transform: translateY(-5px); box-shadow: 0 30px 40px -20px rgba(255,215,0,0.25); }
-        .service-img-card {
-            background: #0f172a;
-            border-radius: 1.8rem;
-            overflow: hidden;
-            border: 1px solid #fbbf2430;
-            transition: all 0.2s;
-        }
-        .service-img-card:hover { border-color: #fbbf24; transform: scale(1.01); }
-        .service-img-card img { width: 100%; height: 200px; object-fit: cover; border-bottom: 2px solid #fbbf2440; }
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.85);
-            backdrop-filter: blur(8px);
-            align-items: center;
-            justify-content: center;
-            z-index: 9999;
-        }
-        .modal.active { display: flex; }
-        .modal-content {
-            max-width: 80vw;
-            max-height: 85vh;
-            border-radius: 32px;
-            background: #0f172a;
-            padding: 1.2rem;
-            box-shadow: 0 30px 60px #000000aa;
-            border: 1px solid #fbbf2450;
-        }
-        .modal img { max-height: 60vh; border-radius: 24px; object-fit: contain; background: #1e293b; }
-        .modal-desc { color: white; padding: 1rem; font-weight: 300; border-top: 1px dashed #fbbf2450; }
-        .gallery-item { cursor: pointer; transition: 0.2s; }
-        .gallery-item:hover { filter: brightness(1.1); transform: scale(1.02); }
-        /* mobile menu - solid dark, fully responsive */
-        .mobile-menu {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            background: #0f172a;  /* solid dark, no transparency */
-            z-index: 40;
-            transform: translateX(-100%);
-            transition: transform 0.3s ease-in-out;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-        .mobile-menu.menu-open {
-            transform: translateX(0);
-        }
-        .mobile-menu a {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin: 1rem 0;
-            color: white;
-            transition: color 0.2s;
-        }
-        .mobile-menu a:hover {
-            color: #fbbf24;
-        }
-        .mobile-menu .social-buttons {
-            display: flex;
-            gap: 2rem;
-            margin-top: 2.5rem;
-        }
-        .mobile-menu .social-buttons a {
-            background: #fbbf24;
-            color: #0a0f1e;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.8rem;
-            margin: 0;
-        }
-        .mobile-menu .social-buttons a:hover {
-            background: white;
-        }
+        * { font-family: 'Inter', system-ui, sans-serif; }
+        .badge-gold { background: #fbbf24; color: #0a0f1e; padding: 0.25rem 1rem; border-radius: 40px; font-weight: 700; font-size: 0.75rem; display: inline-block; letter-spacing: 0.5px; }
+        .mobile-menu { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: #0f172a; z-index: 40; transform: translateX(-100%); transition: transform 0.3s ease-in-out; display: flex; flex-direction: column; justify-content: center; align-items: center; }
+        .mobile-menu.menu-open { transform: translateX(0); }
+        .mobile-menu a { font-size: 1.5rem; font-weight: 700; margin: 1rem 0; color: white; transition: color 0.2s; }
+        .mobile-menu a:hover { color: #fbbf24; }
+        .mobile-menu .social-buttons { display: flex; gap: 1.5rem; margin-top: 2rem; }
+        .mobile-menu .social-buttons a { background: #fbbf24; color: #0a0f1e; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin: 0; }
+        .service-card { background: #0f172a; border-radius: 1.5rem; overflow: hidden; border: 1px solid #fbbf2430; transition: all 0.3s; }
+        .service-card:hover { transform: translateY(-5px); border-color: #fbbf24; box-shadow: 0 20px 30px -10px #00000099; }
+        .service-card img { width: 100%; height: 200px; object-fit: cover; border-bottom: 2px solid #fbbf2440; }
+        .stat-card { background: #0f172a; padding: 1.5rem; border-radius: 1rem; border-left: 4px solid #fbbf24; }
+        @media (max-width: 640px) { h1 { font-size: 2.5rem; } .container { padding-left: 1rem; padding-right: 1rem; } }
     </style>
 </head>
 <body class="bg-[#0a0f1e] text-white scroll-smooth">
 
-<!-- MODAL GALLERY -->
-<div id="imageModal" class="modal" onclick="if(event.target===this) closeModal()">
-    <div class="modal-content relative">
-        <button onclick="closeModal()" class="absolute top-4 right-5 text-4xl text-yellow-300 hover:text-white z-50">&times;</button>
-        <img id="modalImage" src="" alt="work detail" class="w-full">
-        <div id="modalCaption" class="modal-desc text-center text-yellow-100/90 text-lg"></div>
-    </div>
-</div>
-
 <!-- STICKY MOBILE CALL BAR -->
-<div class="fixed bottom-0 left-0 w-full bg-[#0f172a] text-white py-3 px-5 flex justify-between items-center z-50 md:hidden shadow-2xl border-t border-yellow-500/40 backdrop-blur-lg bg-opacity-98">
-    <span class="flex items-center gap-2 text-sm font-bold"><i class="fas fa-bolt text-yellow-400"></i> 24/7 emergency</span>
-    <div class="flex gap-4">
-        <a href="tel:+27768216636" class="bg-yellow-400 hover:bg-yellow-300 text-[#0a0f1e] px-5 py-2 rounded-full text-sm font-bold flex items-center gap-2 transition"><i class="fas fa-phone-alt"></i> CALL</a>
-        <a href="https://wa.me/27768216636?text=Hello%20Philip's%20Plumbing%2C%20I%20need%20urgent%20plumbing%20help%20in%20Johannesburg." target="_blank" class="bg-yellow-400 text-[#0a0f1e] px-5 py-2 rounded-full text-sm font-bold flex items-center gap-2 transition"><i class="fab fa-whatsapp"></i> WHATSAPP</a>
+<div class="fixed bottom-0 left-0 w-full bg-[#0f172a] text-white py-2 px-4 flex justify-between items-center z-50 md:hidden shadow-2xl border-t border-yellow-500/40">
+    <span class="flex items-center gap-1 text-xs font-bold"><i class="fas fa-bolt text-yellow-400"></i> 24/7</span>
+    <div class="flex gap-2">
+        <a href="tel:+27664774325" class="bg-yellow-400 hover:bg-yellow-300 text-[#0a0f1e] px-4 py-1.5 rounded-full text-xs font-bold flex items-center gap-1"><i class="fas fa-phone-alt"></i> CALL</a>
+        <a href="https://wa.me/27664774325?text=Hello%20Philip's%20Plumbing%2C%20I%20need%20urgent%20plumbing%20help%20in%20Johannesburg." target="_blank" class="bg-yellow-400 text-[#0a0f1e] px-4 py-1.5 rounded-full text-xs font-bold flex items-center gap-1"><i class="fab fa-whatsapp"></i> CHAT</a>
     </div>
 </div>
 
-<!-- HEADER dark + gold -->
-<header class="bg-[#0f172a] border-b border-yellow-500/20 py-3 sticky top-0 z-40 backdrop-blur-md bg-opacity-95">
-    <div class="container mx-auto px-6 flex justify-between items-center">
-        <div class="flex items-center gap-3">
-            <div class="w-12 h-12 bg-yellow-400 rounded-2xl flex items-center justify-center text-[#0a0f1e] text-3xl"><i class="fas fa-wrench"></i></div>
+<!-- HEADER -->
+<header class="bg-[#0f172a] border-b border-yellow-500/20 py-2 sticky top-0 z-40">
+    <div class="container mx-auto px-4 flex justify-between items-center">
+        <div class="flex items-center gap-2">
+            <div class="w-10 h-10 bg-yellow-400 rounded-xl flex items-center justify-center text-[#0a0f1e] text-xl"><i class="fas fa-wrench"></i></div>
             <div>
-                <span class="font-black text-2xl tracking-tight text-white">PHILIP'S</span>
-                <span class="block text-xs font-medium text-yellow-300/70">plumbing • johannesburg</span>
+                <span class="font-black text-lg tracking-tight text-white">PHILIP'S</span>
+                <span class="block text-[0.65rem] font-medium text-yellow-300/70">plumbing • jhb</span>
             </div>
         </div>
-        <nav class="hidden md:flex items-center gap-8 font-semibold text-gray-200">
-            <a href="#" class="hover:text-yellow-400 transition">Home</a>
-            <a href="#services" class="hover:text-yellow-400 transition">Services</a>
-            <a href="#about" class="hover:text-yellow-400 transition">About</a>
-            <a href="#gallery-section" class="hover:text-yellow-400 transition">Projects</a>
-            <a href="#testimonials" class="hover:text-yellow-400 transition">Reviews</a>
-            <a href="#contact" class="hover:text-yellow-400 transition">Contact</a>
+        <nav class="hidden md:flex items-center gap-4 text-sm font-semibold text-gray-200">
+            <a href="index.html" class="text-yellow-400">Home</a>
+            <a href="services.html" class="hover:text-yellow-400">Services</a>
+            <a href="about.html" class="hover:text-yellow-400">About</a>
+            <a href="gallery.html" class="hover:text-yellow-400">Projects</a>
+            <a href="contact.html" class="hover:text-yellow-400">Contact</a>
         </nav>
-        <div class="hidden md:flex items-center gap-3">
-            <a href="tel:0768216636" class="bg-yellow-400 text-[#0a0f1e] px-5 py-2.5 rounded-full text-sm font-bold hover:bg-yellow-300 transition flex items-center gap-2 shadow-md"><i class="fas fa-phone-alt"></i> 076 821 6636</a>
-            <a href="https://wa.me/27768216636?text=Quote%20request%20from%20website%20-%20Philip's%20Plumbing" target="_blank" class="bg-yellow-400 text-[#0a0f1e] px-5 py-2.5 rounded-full text-sm font-bold hover:bg-yellow-300 transition flex items-center gap-2 shadow-md"><i class="fab fa-whatsapp"></i> WHATSAPP QUOTE</a>
+        <div class="hidden md:flex items-center gap-2">
+            <a href="tel:+27664774325" class="bg-yellow-400 text-[#0a0f1e] px-3 py-1.5 rounded-full text-xs font-bold hover:bg-yellow-300 flex items-center gap-1"><i class="fas fa-phone-alt"></i> 066 477 4325</a>
+            <a href="https://wa.me/27664774325" target="_blank" class="bg-yellow-400 text-[#0a0f1e] px-3 py-1.5 rounded-full text-xs font-bold hover:bg-yellow-300 flex items-center gap-1"><i class="fab fa-whatsapp"></i> QUOTE</a>
         </div>
-        <!-- Mobile menu button (hamburger) -->
-        <button id="menuBtn" class="block md:hidden text-3xl text-yellow-400 focus:outline-none z-50 relative">
+        <button id="menuBtn" class="block md:hidden text-2xl text-yellow-400 z-50 relative">
             <i class="fas fa-bars"></i>
         </button>
     </div>
 
-    <!-- Mobile menu overlay panel - SOLID DARK, fully responsive -->
+    <!-- Mobile menu -->
     <div id="mobileMenu" class="mobile-menu">
-        <a href="#" class="mobile-link">Home</a>
-        <a href="#services" class="mobile-link">Services</a>
-        <a href="#about" class="mobile-link">About</a>
-        <a href="#gallery-section" class="mobile-link">Projects</a>
-        <a href="#testimonials" class="mobile-link">Reviews</a>
-        <a href="#contact" class="mobile-link">Contact</a>
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="about.html">About</a>
+        <a href="gallery.html">Projects</a>
+        <a href="contact.html">Contact</a>
         <div class="social-buttons">
-            <a href="tel:0768216636" class="mobile-link"><i class="fas fa-phone-alt"></i></a>
-            <a href="https://wa.me/27768216636?text=Quote%20request" target="_blank" class="mobile-link"><i class="fab fa-whatsapp"></i></a>
+            <a href="tel:+27664774325"><i class="fas fa-phone-alt"></i></a>
+            <a href="https://wa.me/27664774325" target="_blank"><i class="fab fa-whatsapp"></i></a>
         </div>
     </div>
 </header>
 
-<!-- HERO with SOLID dark background (text fully visible) -->
-<section class="relative text-white pt-24 pb-32 md:pt-32 md:pb-40 overflow-hidden" id="home">
-    <!-- Professional background image with dark overlay -->
+<!-- HERO SECTION -->
+<section class="relative text-white pt-16 pb-20 md:pt-24 md:pb-32 overflow-hidden">
     <div class="absolute inset-0 z-0">
-        <img src="https://images.unsplash.com/photo-1585704032915-c3400ca199e7?q=80&w=2070&auto=format&fit=crop" alt="Professional plumbing tools" class="w-full h-full object-cover">
-        <div class="absolute inset-0 bg-gradient-to-r from-[#0a0f1e] via-[#0a0f1e]/65 to-[#0f172a]/90"></div>
+        <img src="images/plumbing10.webp" alt="Plumbing work" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-gradient-to-r from-[#0a0f1e] via-[#0a0f1e]/80 to-[#0f172a]/90"></div>
     </div>
     
-    <div class="container mx-auto px-6 relative z-10">
-        <div class="grid md:grid-cols-2 gap-12 items-center">
-            <div data-aos="fade-up" data-aos-duration="800">
-                <span class="badge-gold mb-6 inline-block"><i class="fas fa-bolt mr-1"></i> 24/7 EMERGENCY RESPONSE</span>
-                <h1 class="text-5xl md:text-7xl font-extrabold leading-tight mb-6">Philip's <span class="text-yellow-400">Plumbing</span> <br>Joburg's trusted experts</h1>
-                <p class="text-lg md:text-xl text-gray-200 mb-8 max-w-xl">PIRB‑registered, family owned. Burst geyser? Leak? We're there in 30 min.*</p>
-                <div class="flex flex-wrap gap-4 items-center">
-                    <a href="tel:+27768216636" class="bg-yellow-400 hover:bg-yellow-300 text-[#0a0f1e] font-bold px-8 py-4 rounded-full text-lg shadow-2xl flex items-center gap-3 transition"><i class="fas fa-phone-alt"></i> CALL NOW</a>
-                    <a href="https://wa.me/27768216636?text=Hello%20Philip!%20I%20need%20a%20plumbing%20quote%20urgently%20in%20Johannesburg." target="_blank" class="bg-white/10 backdrop-blur border border-yellow-400/60 hover:bg-yellow-400/20 text-white font-bold px-8 py-4 rounded-full text-lg transition flex items-center gap-3"><i class="fab fa-whatsapp"></i> WHATSAPP QUOTE</a>
+    <div class="container mx-auto px-4 relative z-10">
+        <div class="max-w-3xl">
+            <div data-aos="fade-up">
+                <span class="badge-gold mb-4 inline-block"><i class="fas fa-bolt mr-1"></i> 24/7 EMERGENCY RESPONSE</span>
+                <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-4">Philip's <span class="text-yellow-400">Plumbing</span> <br>Joburg's Trusted Experts</h1>
+                
+                <!-- Paragraphe époustouflant et attirant -->
+                <p class="text-lg md:text-xl text-gray-100 mb-6 font-medium leading-relaxed border-l-4 border-yellow-400 pl-4 bg-gradient-to-r from-yellow-400/10 to-transparent p-3 rounded-r-lg">
+                    <span class="text-yellow-400 font-black">⚡ 30 MINUTES OR LESS ⚡</span><br>
+                    When disaster strikes—burst geysers flooding your home, blocked drains backing up, or hidden leaks wasting thousands—<span class="text-yellow-400 font-bold">every second counts</span>. We're the only plumbers in Joburg who answer the phone at 2am, arrive before you finish panicking, and fix it right the first time. <span class="text-yellow-400">No excuses. No hidden fees. Just plumbing excellence.</span>
+                </p>
+                
+                <p class="text-base md:text-lg text-gray-200 mb-6 max-w-xl">PIRB‑registered, family owned since 2013. Burst geyser? Blocked drain? Leak? We're there within 30 minutes.*</p>
+                
+                <div class="flex flex-wrap gap-3 items-center">
+                    <a href="tel:+27664774325" class="bg-yellow-400 hover:bg-yellow-300 text-[#0a0f1e] font-bold px-6 py-3 rounded-full text-sm shadow-2xl flex items-center gap-2 transition transform hover:scale-105"><i class="fas fa-phone-alt"></i> CALL NOW</a>
+                    <a href="https://wa.me/27664774325?text=Hello%20Philip!%20I%20need%20a%20plumbing%20quote%20urgently%20in%20Johannesburg." target="_blank" class="bg-white/10 border border-yellow-400/60 hover:bg-yellow-400/20 text-white font-bold px-6 py-3 rounded-full text-sm flex items-center gap-2 transition"><i class="fab fa-whatsapp"></i> WHATSAPP US</a>
                 </div>
-                <div class="flex items-center gap-5 mt-10 text-sm text-gray-300">
-                    <span><i class="fas fa-check-circle text-yellow-400 mr-1"></i> Licensed & insured</span>
-                    <span><i class="fas fa-star text-yellow-400 mr-1"></i> 5.0 rating</span>
-                    <span><i class="fas fa-tools mr-1"></i> PIRB registered</span>
-                </div>
-            </div>
-            <!-- lead form (sends to whatsapp) -->
-            <div class="bg-[#0f172a]/80 backdrop-blur-xl rounded-3xl p-8 border border-yellow-500/30 shadow-2xl" data-aos="fade-left" id="quote">
-                <h3 class="text-2xl font-bold text-white mb-2">⚡ emergency quote</h3>
-                <p class="text-yellow-200/80 text-sm mb-6">via WhatsApp within 5 minutes</p>
-                <form onsubmit="event.preventDefault(); window.open('https://wa.me/27768216636?text='+encodeURIComponent('Name: '+document.getElementById('heroName').value+'\nSuburb: '+document.getElementById('heroSuburb').value+'\nProblem: '+document.getElementById('heroProblem').value), '_blank');">
-                    <div class="grid grid-cols-2 gap-4">
-                        <input id="heroName" type="text" placeholder="First name" class="px-4 py-3 rounded-xl bg-[#1e293b] border-0 text-white placeholder-gray-400 focus:ring-2 focus:ring-yellow-400">
-                        <input type="text" placeholder="Surname" class="px-4 py-3 rounded-xl bg-[#1e293b] border-0 text-white placeholder-gray-400">
-                    </div>
-                    <input id="heroSuburb" type="text" placeholder="Your suburb (e.g. Sandton)" class="w-full mt-4 px-4 py-3 rounded-xl bg-[#1e293b] border-0 text-white placeholder-gray-400">
-                    <textarea id="heroProblem" rows="2" placeholder="Brief description of the problem" class="w-full mt-4 px-4 py-3 rounded-xl bg-[#1e293b] border-0 text-white placeholder-gray-400"></textarea>
-                    <button type="submit" class="w-full bg-yellow-400 hover:bg-yellow-300 text-[#0a0f1e] font-bold py-4 mt-5 rounded-xl text-lg transition shadow-xl"><i class="fab fa-whatsapp mr-2"></i> SEND VIA WHATSAPP</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- STATS & TRUST BADGES -->
-<section class="py-20 bg-[#0a0f1e]">
-    <div class="container mx-auto px-6">
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center" data-aos="fade-up">
-            <div class="stat-card hover-lift"><span class="text-4xl font-black text-yellow-400">12+</span> <span class="block text-gray-300">years experience</span></div>
-            <div class="stat-card hover-lift"><span class="text-4xl font-black text-yellow-400">3.5k+</span> <span class="block text-gray-300">projects done</span></div>
-            <div class="stat-card hover-lift"><span class="text-4xl font-black text-yellow-400">24/7</span> <span class="block text-gray-300">emergency</span></div>
-            <div class="stat-card hover-lift"><span class="text-4xl font-black text-yellow-400">5.0</span> <span class="block text-gray-300"><i class="fas fa-star text-yellow-400"></i> reviews</span></div>
-        </div>
-        <div class="flex flex-wrap items-center justify-center gap-6 mt-12">
-            <span class="bg-[#1e293b] px-5 py-2.5 rounded-full text-sm border border-yellow-500/30"><i class="fas fa-id-card text-yellow-400 mr-1"></i> LICENSED & PIRB</span>
-            <span class="bg-[#1e293b] px-5 py-2.5 rounded-full text-sm border border-yellow-500/30"><i class="fas fa-shield-alt text-yellow-400 mr-1"></i> FULLY INSURED</span>
-            <span class="bg-[#1e293b] px-5 py-2.5 rounded-full text-sm border border-yellow-500/30"><i class="fas fa-clock text-yellow-400 mr-1"></i> 24/7 AVAILABLE</span>
-            <span class="bg-[#1e293b] px-5 py-2.5 rounded-full text-sm border border-yellow-500/30"><i class="fas fa-map-marker-alt text-yellow-400 mr-1"></i> SANDTON • MIDRAND • RANDBURG • JHB</span>
-        </div>
-    </div>
-</section>
-
-<!-- SERVICES with NORMAL images (not background) and heavy content -->
-<section id="services" class="py-24 bg-[#0f172a]">
-    <div class="container mx-auto px-6">
-        <div class="text-center mb-16" data-aos="fade-up">
-            <span class="badge-gold">EXPERT SOLUTIONS</span>
-            <h2 class="text-4xl md:text-5xl font-bold text-white mt-4">Philip's services</h2>
-            <p class="text-gray-400 max-w-2xl mx-auto mt-4">Certified, fast, with high-end equipment – real projects images</p>
-        </div>
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <!-- LEAK DETECTION -->
-            <div class="service-img-card" data-aos="zoom-in">
-                <img src="/images/Leak-Detection.jpg" alt="Leak detection" class="w-full">
-                <div class="p-6">
-                    <h3 class="text-2xl font-bold text-yellow-400 mb-2">Leak detection</h3>
-                    <p class="text-gray-300 text-sm mb-3">Advanced acoustic & gas detection – pinpoint hidden leaks without breaking floors or walls. 98% accuracy. Non‑invasive, guaranteed.</p>
-                    <span class="inline-block bg-yellow-400/10 text-yellow-300 text-xs px-3 py-1 rounded-full">⚡ same‑day service</span>
-                </div>
-            </div>
-            <!-- GEYSER SERVICING -->
-            <div class="service-img-card" data-aos="zoom-in" data-aos-delay="50">
-                <img src="/images/Geyser-Servicing.jpg" alt="Geyser repair" class="w-full">
-                <div class="p-6">
-                    <h3 class="text-2xl font-bold text-yellow-400 mb-2">Geyser repair / install</h3>
-                    <p class="text-gray-300 text-sm mb-3">Burst geyser? We replace & repair all brands (Kwikot, ITS, Solar). PIRB registered, with smart sensor integration. Emergency call‑out.</p>
-                    <span class="inline-block bg-yellow-400/10 text-yellow-300 text-xs px-3 py-1 rounded-full">🔧 certified plumbers</span>
-                </div>
-            </div>
-            <!-- WATER SYSTEMS -->
-            <div class="service-img-card" data-aos="zoom-in" data-aos-delay="100">
-                <img src="/images/Water-Systems.jpg" alt="Water systems" class="w-full">
-                <div class="p-6">
-                    <h3 class="text-2xl font-bold text-yellow-400 mb-2">Water systems</h3>
-                    <p class="text-gray-300 text-sm mb-3">Jojo tanks, pressure pumps, rainwater harvesting, filtration – complete design, installation & maintenance. Sustainable backup.</p>
-                    <span class="inline-block bg-yellow-400/10 text-yellow-300 text-xs px-3 py-1 rounded-full">💧 free quote</span>
-                </div>
-            </div>
-            <!-- DRAIN / MAINTENANCE -->
-            <div class="service-img-card" data-aos="zoom-in">
-                <img src="/images/Maintenance.jpg" alt="Drain maintenance" class="w-full">
-                <div class="p-6">
-                    <h3 class="text-2xl font-bold text-yellow-400 mb-2">Drain & maintenance</h3>
-                    <p class="text-gray-300 text-sm mb-3">High‑pressure water jetting, drain machines, unblocking sinks/toilets. Preventive maintenance contracts available for body corporates.</p>
-                    <span class="inline-block bg-yellow-400/10 text-yellow-300 text-xs px-3 py-1 rounded-full">🛠️ fast response</span>
-                </div>
-            </div>
-            <!-- BATHROOM / VANITY -->
-            <div class="service-img-card" data-aos="zoom-in" data-aos-delay="50">
-                <img src="/images/Vanity-Sinks.jpg" alt="Bathroom renovation" class="w-full">
-                <div class="p-6">
-                    <h3 class="text-2xl font-bold text-yellow-400 mb-2">Bathroom renovation</h3>
-                    <p class="text-gray-300 text-sm mb-3">Full plumbing for new builds, remodels, luxury vanities, showers, and disability‑friendly bathrooms (PWD). Design & build service.</p>
-                    <span class="inline-block bg-yellow-400/10 text-yellow-300 text-xs px-3 py-1 rounded-full">🚿 premium finishes</span>
-                </div>
-            </div>
-            <!-- COMMERCIAL PLUMBING -->
-            <div class="service-img-card" data-aos="zoom-in" data-aos-delay="100">
-                <img src="/images/commercial-plumbing.jpeg" alt="Commercial plumbing" class="w-full">
-                <div class="p-6">
-                    <h3 class="text-2xl font-bold text-yellow-400 mb-2">Commercial plumbing</h3>
-                    <p class="text-gray-300 text-sm mb-3">Shoprite, Checkers, Digicall, offices – we handle large‑scale installations, maintenance, and emergency call‑outs. 24/7 for businesses.</p>
-                    <span class="inline-block bg-yellow-400/10 text-yellow-300 text-xs px-3 py-1 rounded-full">🏢 trusted by corporates</span>
+                
+                <div class="flex flex-wrap gap-4 mt-6 text-xs text-gray-300">
+                    <span><i class="fas fa-check-circle text-yellow-400 mr-1"></i> Licensed & Insured</span>
+                    <span><i class="fas fa-star text-yellow-400 mr-1"></i> 5.0 Rating (200+ reviews)</span>
+                    <span><i class="fas fa-tools mr-1"></i> PIRB Registered</span>
+                    <span><i class="fas fa-clock text-yellow-400 mr-1"></i> 30min Response*</span>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- NEW ABOUT SECTION (heavy professional content) -->
-<section id="about" class="py-24 bg-[#0a0f1e]">
-    <div class="container mx-auto px-6">
-        <div class="grid md:grid-cols-2 gap-16 items-center">
+<!-- STATS SECTION -->
+<section class="py-12 bg-[#0a0f1e]">
+    <div class="container mx-auto px-4">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+            <div class="stat-card" data-aos="fade-up"><span class="text-3xl md:text-4xl font-black text-yellow-400">7+</span> <span class="block text-xs md:text-sm text-gray-300 mt-1">Years Experience</span></div>
+            <div class="stat-card" data-aos="fade-up" data-aos-delay="50"><span class="text-3xl md:text-4xl font-black text-yellow-400">500+</span> <span class="block text-xs md:text-sm text-gray-300 mt-1">Projects Completed</span></div>
+            <div class="stat-card" data-aos="fade-up" data-aos-delay="100"><span class="text-3xl md:text-4xl font-black text-yellow-400">24/7</span> <span class="block text-xs md:text-sm text-gray-300 mt-1">Emergency Service</span></div>
+            <div class="stat-card" data-aos="fade-up" data-aos-delay="150"><span class="text-3xl md:text-4xl font-black text-yellow-400">5.0</span> <span class="block text-xs md:text-sm text-gray-300 mt-1"><i class="fas fa-star text-yellow-400"></i> Google Rating</span></div>
+        </div>
+    </div>
+</section>
+
+<!-- FEATURED SERVICES SECTION -->
+<section class="py-16 bg-[#0f172a]">
+    <div class="container mx-auto px-4">
+        <div class="text-center mb-10" data-aos="fade-up">
+            <span class="badge-gold">OUR EXPERTISE</span>
+            <h2 class="text-3xl md:text-4xl font-bold text-white mt-3 mb-3">Professional Plumbing Services</h2>
+            <p class="text-gray-400 max-w-2xl mx-auto text-sm">We handle everything from emergency repairs to complete installations</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+            <!-- Service 1 -->
+            <div class="service-card" data-aos="zoom-in">
+                <img src="images/Leak-Detection.jpg" alt="Leak Detection" class="w-full h-48 object-cover">
+                <div class="p-5">
+                    <h3 class="text-xl font-bold text-yellow-400 mb-2">Leak Detection</h3>
+                    <p class="text-gray-300 text-sm mb-3">Advanced acoustic and gas detection technology to find hidden leaks without breaking walls or floors. 98% accuracy rate.</p>
+                    <span class="inline-block bg-yellow-400/10 text-yellow-300 text-xs px-3 py-1 rounded-full">Non-invasive</span>
+                </div>
+            </div>
+            <!-- Service 2 -->
+            <div class="service-card" data-aos="zoom-in" data-aos-delay="50">
+                <img src="images/Geyser-Servicing.jpg" alt="Geyser Repair" class="w-full h-48 object-cover">
+                <div class="p-5">
+                    <h3 class="text-xl font-bold text-yellow-400 mb-2">Geyser Repairs & Installation</h3>
+                    <p class="text-gray-300 text-sm mb-3">Burst geyser? We replace and repair all brands (Kwikot, ITS, Solar). PIRB registered with 5-year warranty on installations.</p>
+                    <span class="inline-block bg-yellow-400/10 text-yellow-300 text-xs px-3 py-1 rounded-full">PIRB registered</span>
+                </div>
+            </div>
+            <!-- Service 3 -->
+            <div class="service-card" data-aos="zoom-in" data-aos-delay="100">
+                <img src="images/Water-Systems.jpg" alt="Water Systems" class="w-full h-48 object-cover">
+                <div class="p-5">
+                    <h3 class="text-xl font-bold text-yellow-400 mb-2">Water Systems</h3>
+                    <p class="text-gray-300 text-sm mb-3">Jojo tanks, pressure pumps, rainwater harvesting, filtration systems. Complete design and installation for backup water.</p>
+                    <span class="inline-block bg-yellow-400/10 text-yellow-300 text-xs px-3 py-1 rounded-full">Free quote</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="text-center mt-8">
+            <a href="services.html" class="inline-block border-2 border-yellow-400 text-yellow-400 hover:bg-yellow-400 hover:text-[#0a0f1e] font-bold px-6 py-3 rounded-full text-sm transition">VIEW ALL SERVICES <i class="fas fa-arrow-right ml-2"></i></a>
+        </div>
+    </div>
+</section>
+
+<!-- WHY CHOOSE US -->
+<section class="py-16 bg-[#0a0f1e]">
+    <div class="container mx-auto px-4">
+        <div class="grid md:grid-cols-2 gap-10 items-center">
             <div data-aos="fade-right">
-                <span class="badge-gold">WHO WE ARE</span>
-                <h2 class="text-4xl md:text-5xl font-bold text-white mt-4 mb-6">Family‑owned, <br>Joburg proud since 2013</h2>
-                <p class="text-gray-300 text-lg mb-6">Philip's Plumbing is a PIRB‑registered, family‑run business built on word‑of‑mouth. From fixing a leaking toilet to full bathroom renovations and complex commercial developments, we deliver quality workmanship and smart solutions.</p>
-                <p class="text-gray-400 mb-6">Our team is known for being reliable, loyal and trustworthy, with fast response times and efficient service at our core. We endeavour to provide the most dependable service—without ever compromising on quality or safety.</p>
-                <div class="grid grid-cols-2 gap-4 mt-8">
-                    <div><i class="fas fa-certificate text-yellow-400 mr-2"></i> PIRB registered</div>
-                    <div><i class="fas fa-microphone-alt text-yellow-400 mr-2"></i> SA Leak Detection</div>
-                    <div><i class="fas fa-wifi text-yellow-400 mr-2"></i> Sensor Networks</div>
-                    <div><i class="fas fa-hard-hat text-yellow-400 mr-2"></i> Fully insured</div>
+                <span class="badge-gold">WHY PHILIP'S?</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-white mt-3 mb-4">Joburg's Most Trusted Plumbers</h2>
+                <p class="text-gray-400 text-sm mb-6">Family-owned and operated since 2013, we've built our reputation on honesty, quality workmanship, and fast response times.</p>
+                
+                <div class="space-y-4">
+                    <div class="flex gap-3">
+                        <div class="w-8 h-8 bg-yellow-400/20 rounded-full flex items-center justify-center text-yellow-400 flex-shrink-0"><i class="fas fa-clock text-sm"></i></div>
+                        <div><h4 class="font-bold text-sm">30-Minute Response*</h4><p class="text-xs text-gray-400">We're usually at your door within 30 minutes for emergencies.</p></div>
+                    </div>
+                    <div class="flex gap-3">
+                        <div class="w-8 h-8 bg-yellow-400/20 rounded-full flex items-center justify-center text-yellow-400 flex-shrink-0"><i class="fas fa-certificate text-sm"></i></div>
+                        <div><h4 class="font-bold text-sm">PIRB Registered & Insured</h4><p class="text-xs text-gray-400">Fully certified and insured for your peace of mind.</p></div>
+                    </div>
+                    <div class="flex gap-3">
+                        <div class="w-8 h-8 bg-yellow-400/20 rounded-full flex items-center justify-center text-yellow-400 flex-shrink-0"><i class="fas fa-hand-holding-usd text-sm"></i></div>
+                        <div><h4 class="font-bold text-sm">Fair & Transparent Pricing</h4><p class="text-xs text-gray-400">No hidden fees. Free quotes before any work starts.</p></div>
+                    </div>
+                    <div class="flex gap-3">
+                        <div class="w-8 h-8 bg-yellow-400/20 rounded-full flex items-center justify-center text-yellow-400 flex-shrink-0"><i class="fas fa-tools text-sm"></i></div>
+                        <div><h4 class="font-bold text-sm">Modern Equipment</h4><p class="text-xs text-gray-400">CCTV drain cameras, acoustic leak detectors, high-pressure jetting.</p></div>
+                    </div>
                 </div>
             </div>
-            <div class="grid grid-cols-2 gap-4" data-aos="fade-left">
-                <img src="/images/Maintenance-Work.jpg" class="rounded-3xl border border-yellow-500/40 h-64 object-cover w-full" alt="team at work">
-                <img src="/images/Geyser-Installations.jpg" class="rounded-3xl border border-yellow-500/40 h-64 object-cover w-full mt-8" alt="geyser install">
+            <div class="grid grid-cols-2 gap-3" data-aos="fade-left">
+                <img src="images/Maintenance.jpg" class="rounded-2xl border border-yellow-500/40 h-48 object-cover w-full" alt="Plumbing work">
+                <img src="images/Geyser-Installations.jpg" class="rounded-2xl border border-yellow-500/40 h-48 object-cover w-full mt-6" alt="Geyser install">
             </div>
-        </div>
-    </div>
-</section>
-
-<!-- GALLERY SECTION WITH MODAL -->
-<section id="gallery-section" class="py-24 bg-[#0f172a]">
-    <div class="container mx-auto px-6">
-        <div class="text-center mb-14" data-aos="fade-up">
-            <span class="badge-gold"><i class="fas fa-camera-retro mr-1"></i> OUR WORK</span>
-            <h2 class="text-4xl md:text-5xl font-bold text-white mt-4">project gallery</h2>
-            <p class="text-gray-400">click on any image for details</p>
-        </div>
-        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-3" data-aos="fade-up">
-            <div class="gallery-item" onclick="openModal('/images/Geyser_Insterllation.New_Installation.Extra_Pics1.Additional_pics.jpg','New geyser installation – full system with safety valves and expansion vessel.')"><img src="/images/Geyser_Insterllation.New_Installation.Extra_Pics1.Additional_pics.jpg" class="rounded-2xl border-2 border-yellow-500/30 h-28 w-full object-cover"></div>
-            <div class="gallery-item" onclick="openModal('/images/Geyser-Installations.jpg','Solar geyser installation with backup element – PIRB registered.')"><img src="/images/Geyser-Installations.jpg" class="rounded-2xl border-2 border-yellow-500/30 h-28 w-full object-cover"></div>
-            <div class="gallery-item" onclick="openModal('/images/Maintenance_Repair.Aditional_images3.Image_of_work.jpg','Pipe repair – before/after. Durable braided hoses and copper.')"><img src="/images/Maintenance_Repair.Aditional_images3.Image_of_work.jpg" class="rounded-2xl border-2 border-yellow-500/30 h-28 w-full object-cover"></div>
-            <div class="gallery-item" onclick="openModal('/images/Shower.jpg','Luxury shower installation with thermostatic mixer and tile‑in rose.')"><img src="/images/Shower.jpg" class="rounded-2xl border-2 border-yellow-500/30 h-28 w-full object-cover"></div>
-            <div class="gallery-item" onclick="openModal('/images/Toilet-Plumbing.jpg','Wall‑hung toilet and concealed cistern installation – modern finish.')"><img src="/images/Toilet-Plumbing.jpg" class="rounded-2xl border-2 border-yellow-500/30 h-28 w-full object-cover"></div>
-            <div class="gallery-item" onclick="openModal('/images/Vanity.jpg','Custom vanity unit with soft‑close doors and stone top.')"><img src="/images/Vanity.jpg" class="rounded-2xl border-2 border-yellow-500/30 h-28 w-full object-cover"></div>
-            <div class="gallery-item" onclick="openModal('/images/Maintenance-Work.jpg','Maintenance work – checking geyser temperature/pressure relief.')"><img src="/images/Maintenance-Work.jpg" class="rounded-2xl border-2 border-yellow-500/30 h-28 w-full object-cover"></div>
         </div>
     </div>
 </section>
 
 <!-- TESTIMONIALS -->
-<section id="testimonials" class="py-24 bg-[#0a0f1e]">
-    <div class="container mx-auto px-6">
-        <div class="text-center max-w-3xl mx-auto mb-16" data-aos="fade-up">
+<section class="py-16 bg-[#0f172a]">
+    <div class="container mx-auto px-4">
+        <div class="text-center mb-10" data-aos="fade-up">
             <span class="badge-gold">★★★★★</span>
-            <h2 class="text-4xl md:text-5xl font-bold text-white mt-4">client reviews</h2>
+            <h2 class="text-3xl md:text-4xl font-bold text-white mt-3">What Our Clients Say</h2>
+            <p class="text-gray-400 text-sm mt-2">200+ 5-star reviews from happy customers</p>
         </div>
-        <div class="grid md:grid-cols-3 gap-7">
-            <div class="bg-[#1a2538] p-8 rounded-3xl border border-yellow-500/20"><div class="flex text-yellow-400 text-xl mb-4">★★★★★</div><p class="text-gray-300 mb-5">“Burst geyser at 10pm – they arrived within an hour, replaced it next morning. Fair pricing.”</p><div class="flex items-center gap-3"><div class="w-12 h-12 bg-yellow-400/20 rounded-full flex items-center justify-center text-yellow-400 font-bold">MS</div><span class="font-bold">Mannie Small</span></div></div>
-            <div class="bg-[#1a2538] p-8 rounded-3xl border border-yellow-500/20"><div class="flex text-yellow-400 text-xl mb-4">★★★★★</div><p class="text-gray-300 mb-5">“We use Philip's for all commercial sites (Shoprite, Checkers). Reliable, fast.”</p><div class="flex items-center gap-3"><div class="w-12 h-12 bg-yellow-400/20 rounded-full flex items-center justify-center text-yellow-400 font-bold">FP</div><span class="font-bold">Francois P.</span></div></div>
-            <div class="bg-[#1a2538] p-8 rounded-3xl border border-yellow-500/20"><div class="flex text-yellow-400 text-xl mb-4">★★★★★</div><p class="text-gray-300 mb-5">“Leak detection saved us thousands – found hidden pipe without breaking floor. Thank you!”</p><div class="flex items-center gap-3"><div class="w-12 h-12 bg-yellow-400/20 rounded-full flex items-center justify-center text-yellow-400 font-bold">CV</div><span class="font-bold">Carla van E.</span></div></div>
-        </div>
-    </div>
-</section>
 
-<!-- CONTACT + WHATSAPP -->
-<section id="contact" class="py-24 bg-[#0f172a]">
-    <div class="container mx-auto px-6">
-        <div class="bg-gradient-to-br from-[#0f172a] to-[#1a2538] rounded-4xl p-10 md:p-16 border border-yellow-500/30 shadow-2xl">
-            <div class="grid md:grid-cols-2 gap-12 items-center">
-                <div data-aos="fade-right">
-                    <span class="badge-gold"><i class="fas fa-headset"></i> 24/7 SUPPORT</span>
-                    <h3 class="text-4xl font-bold text-white mt-6 mb-4">direct contact</h3>
-                    <p class="text-gray-400 text-lg mb-6">We reply within minutes on WhatsApp.</p>
-                    <div class="space-y-4 text-gray-300">
-                        <span class="flex items-center gap-3"><i class="fas fa-phone-alt text-yellow-400 w-6"></i> <a href="tel:0768216636" class="hover:underline">076 821 6636</a></span>
-                        <span class="flex items-center gap-3"><i class="fab fa-whatsapp text-yellow-400 w-6"></i> <a href="https://wa.me/27768216636" target="_blank">+27 76 821 6636 (WhatsApp)</a></span>
-                        <span class="flex items-center gap-3"><i class="fas fa-map-pin text-yellow-400 w-6"></i> Johannesburg, Sandton, Midrand, Randburg</span>
-                    </div>
+        <div class="grid md:grid-cols-3 gap-5">
+            <div class="bg-[#1a2538] p-6 rounded-2xl border border-yellow-500/20" data-aos="fade-up">
+                <div class="flex text-yellow-400 text-lg mb-3">★★★★★</div>
+                <p class="text-gray-300 text-sm mb-4">"Burst geyser at 10pm on a Sunday – Philip arrived within 45 minutes, diagnosed the issue, and replaced it the next morning. Fair pricing and professional service."</p>
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 bg-yellow-400/20 rounded-full flex items-center justify-center text-yellow-400 font-bold">MS</div>
+                    <div><span class="font-bold text-sm">Mannie Small</span><p class="text-xs text-gray-400">Sandton</p></div>
                 </div>
-                <div class="bg-[#0f172a] p-8 rounded-3xl border border-yellow-500/30" data-aos="fade-left">
-                    <h4 class="text-2xl font-bold text-white mb-4"><i class="fab fa-whatsapp text-yellow-400 mr-2"></i> express quote</h4>
-                    <a href="https://wa.me/27768216636?text=Hello%20Philip's%20Plumbing%2C%20I%20have%20a%20plumbing%20emergency%20in%20Johannesburg." target="_blank" class="block w-full bg-yellow-400 hover:bg-yellow-300 text-[#0a0f1e] font-bold py-5 rounded-xl text-center text-xl transition shadow-xl"><i class="fab fa-whatsapp mr-2"></i> CHAT ON WHATSAPP</a>
-                    <p class="text-gray-400 text-sm mt-5 text-center">available 24/7 • instant reply</p>
+            </div>
+            <div class="bg-[#1a2538] p-6 rounded-2xl border border-yellow-500/20" data-aos="fade-up" data-aos-delay="50">
+                <div class="flex text-yellow-400 text-lg mb-3">★★★★★</div>
+                <p class="text-gray-300 text-sm mb-4">"We use Philip's Plumbing for all our commercial sites (Shoprite, Checkers). They're reliable, fast, and their pricing is transparent. Highly recommended."</p>
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 bg-yellow-400/20 rounded-full flex items-center justify-center text-yellow-400 font-bold">FP</div>
+                    <div><span class="font-bold text-sm">Francois P.</span><p class="text-xs text-gray-400">Facility Manager</p></div>
+                </div>
+            </div>
+            <div class="bg-[#1a2538] p-6 rounded-2xl border border-yellow-500/20" data-aos="fade-up" data-aos-delay="100">
+                <div class="flex text-yellow-400 text-lg mb-3">★★★★★</div>
+                <p class="text-gray-300 text-sm mb-4">"Leak detection saved us thousands! They found a hidden pipe leak without breaking our new floor. Professional, clean, and efficient. Thank you Philip!"</p>
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 bg-yellow-400/20 rounded-full flex items-center justify-center text-yellow-400 font-bold">CV</div>
+                    <div><span class="font-bold text-sm">Carla van E.</span><p class="text-xs text-gray-400">Randburg</p></div>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
+<!-- CTA BANNER -->
+<section class="py-12 bg-gradient-to-r from-yellow-600 to-yellow-400">
+    <div class="container mx-auto px-4 text-center">
+        <h2 class="text-2xl md:text-3xl font-bold text-[#0a0f1e] mb-3">Emergency? We're Ready 24/7</h2>
+        <p class="text-[#0a0f1e]/80 text-sm mb-5">Call now for immediate assistance</p>
+        <a href="tel:+27664774325" class="inline-block bg-[#0a0f1e] hover:bg-black text-white font-bold px-8 py-4 rounded-full text-lg shadow-xl transition"><i class="fas fa-phone-alt mr-2"></i> 066 477 4325</a>
+        <p class="text-[#0a0f1e] text-xs mt-4">Free quote • 30 min response*</p>
+    </div>
+</section>
+
 <!-- FOOTER -->
-<footer class="bg-[#0a0f1e] border-t border-yellow-500/20 pt-16 pb-8">
-    <div class="container mx-auto px-6">
-        <div class="grid md:grid-cols-4 gap-10">
-            <div><div class="flex items-center gap-2 mb-4"><div class="w-10 h-10 bg-yellow-400 rounded-xl flex items-center justify-center text-[#0a0f1e] text-xl"><i class="fas fa-wrench"></i></div><span class="font-black text-xl text-white">PHILIP'S</span></div><p class="text-gray-400 text-sm">PIRB-registered, 24/7 emergency plumbing in Johannesburg.</p></div>
-            <div><h5 class="font-bold text-white text-lg mb-4">Quick links</h5><ul class="space-y-2 text-gray-400"><li><a href="#" class="hover:text-yellow-400">Home</a></li><li><a href="#services" class="hover:text-yellow-400">Services</a></li><li><a href="#about" class="hover:text-yellow-400">About</a></li><li><a href="#contact" class="hover:text-yellow-400">Contact</a></li></ul></div>
-            <div><h5 class="font-bold text-white text-lg mb-4">Service areas</h5><ul class="space-y-2 text-gray-400"><li>Johannesburg</li><li>Sandton</li><li>Midrand</li><li>Randburg</li></ul></div>
-            <div><h5 class="font-bold text-white text-lg mb-4">Emergency</h5><p class="text-3xl font-bold text-yellow-400"><a href="tel:0768216636">076 821 6636</a></p><p class="text-sm text-gray-400 mt-2">available 24/7</p></div>
+<footer class="bg-[#0a0f1e] border-t border-yellow-500/20 py-10">
+    <div class="container mx-auto px-4">
+        <div class="grid md:grid-cols-4 gap-8 text-sm">
+            <div>
+                <div class="flex items-center gap-2 mb-3"><div class="w-8 h-8 bg-yellow-400 rounded-lg flex items-center justify-center text-[#0a0f1e]"><i class="fas fa-wrench text-sm"></i></div><span class="font-black text-white">PHILIP'S PLUMBING</span></div>
+                <p class="text-gray-400 text-xs">PIRB-registered, family-owned emergency plumbing in Johannesburg since 2013.</p>
+            </div>
+            <div>
+                <h5 class="font-bold text-white mb-3 text-sm">Quick Links</h5>
+                <ul class="space-y-2 text-xs text-gray-400">
+                    <li><a href="index.html" class="hover:text-yellow-400">Home</a></li>
+                    <li><a href="services.html" class="hover:text-yellow-400">Services</a></li>
+                    <li><a href="about.html" class="hover:text-yellow-400">About Us</a></li>
+                    <li><a href="gallery.html" class="hover:text-yellow-400">Project Gallery</a></li>
+                    <li><a href="contact.html" class="hover:text-yellow-400">Contact</a></li>
+                </ul>
+            </div>
+            <div>
+                <h5 class="font-bold text-white mb-3 text-sm">Service Areas</h5>
+                <ul class="space-y-2 text-xs text-gray-400">
+                    <li>Johannesburg CBD</li>
+                    <li>Sandton</li>
+                    <li>Midrand</li>
+                    <li>Randburg</li>
+                    <li>Rosebank & surrounds</li>
+                </ul>
+            </div>
+            <div>
+                <h5 class="font-bold text-white mb-3 text-sm">Contact</h5>
+                <p class="text-xs text-gray-400 mb-2"><i class="fas fa-phone-alt text-yellow-400 mr-2"></i> <a href="tel:+27664774325" class="hover:text-yellow-400">066 477 4325</a></p>
+                <p class="text-xs text-gray-400"><i class="fab fa-whatsapp text-yellow-400 mr-2"></i> <a href="https://wa.me/27664774325" target="_blank" class="hover:text-yellow-400">WhatsApp 24/7</a></p>
+            </div>
         </div>
-        <div class="border-t border-yellow-500/20 mt-12 pt-6 text-sm text-gray-400 flex flex-col md:flex-row justify-between"><p>© 2026 Philip's Plumbing – all rights reserved.</p><p>conversion‑focused design</p></div>
+        <div class="border-t border-yellow-500/20 mt-8 pt-5 text-center text-xs text-gray-400">
+            <p>© 2026 Philip's Plumbing – All Rights Reserved | Designed By Dascomsoft.</p>
+        </div>
     </div>
 </footer>
 
-<!-- AOS + modal scripts + mobile menu -->
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
-    AOS.init({ once: true, duration: 700 });
+    AOS.init({ once: true, duration: 600 });
     
-    function openModal(imgSrc, desc) {
-        document.getElementById('modalImage').src = imgSrc;
-        document.getElementById('modalCaption').innerText = desc;
-        document.getElementById('imageModal').classList.add('active');
-    }
-    function closeModal() {
-        document.getElementById('imageModal').classList.remove('active');
-    }
-    
-    // Smooth scroll for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            const href = this.getAttribute('href');
-            if (href.length > 1) {
-                const target = document.querySelector(href);
-                if(target) { 
-                    e.preventDefault(); 
-                    target.scrollIntoView({ behavior: 'smooth' }); 
-                    // Close mobile menu if open
-                    document.getElementById('mobileMenu').classList.remove('menu-open');
-                    document.getElementById('menuBtn').innerHTML = '<i class="fas fa-bars"></i>';
-                }
-            }
-        });
-    });
-
-    // Mobile menu toggle
+    // Mobile menu
     const menuBtn = document.getElementById('menuBtn');
     const mobileMenu = document.getElementById('mobileMenu');
-    
     menuBtn.addEventListener('click', function() {
         const isOpen = mobileMenu.classList.contains('menu-open');
-        if (isOpen) {
-            mobileMenu.classList.remove('menu-open');
-            menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
-        } else {
-            mobileMenu.classList.add('menu-open');
-            menuBtn.innerHTML = '<i class="fas fa-times"></i>';
-        }
+        mobileMenu.classList.toggle('menu-open');
+        menuBtn.innerHTML = isOpen ? '<i class="fas fa-bars"></i>' : '<i class="fas fa-times"></i>';
     });
-
-    // Close menu when clicking on a link
-    document.querySelectorAll('.mobile-link').forEach(link => {
+    
+    document.querySelectorAll('.mobile-menu a').forEach(link => {
         link.addEventListener('click', function() {
             mobileMenu.classList.remove('menu-open');
             menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
         });
     });
 </script>
-<div class="h-20 md:h-0"></div>
 </body>
 </html>

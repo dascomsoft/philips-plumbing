@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>About Us | Philip's Plumbing Johannesburg</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * { font-family: 'Inter', system-ui, sans-serif; }
+        .badge-gold { background: #fbbf24; color: #0a0f1e; padding: 0.25rem 1rem; border-radius: 40px; font-weight: 700; font-size: 0.75rem; display: inline-block; }
+        .mobile-menu { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: #0f172a; z-index: 40; transform: translateX(-100%); transition: transform 0.3s; display: flex; flex-direction: column; justify-content: center; align-items: center; }
+        .mobile-menu.menu-open { transform: translateX(0); }
+        .mobile-menu a { font-size: 1.5rem; font-weight: 700; margin: 1rem 0; color: white; }
+        .mobile-menu .social-buttons { display: flex; gap: 1.5rem; margin-top: 2rem; }
+        .mobile-menu .social-buttons a { background: #fbbf24; color: #0a0f1e; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; }
+        .milestone-card { background: #0f172a; padding: 1.5rem; border-radius: 1rem; border-left: 4px solid #fbbf24; text-align: center; }
+    </style>
+</head>
+<body class="bg-[#0a0f1e] text-white">
+
+<!-- Mobile call bar -->
+<div class="fixed bottom-0 left-0 w-full bg-[#0f172a] py-2 px-4 flex justify-between items-center z-50 md:hidden border-t border-yellow-500/40">
+    <span class="text-xs font-bold"><i class="fas fa-bolt text-yellow-400"></i> 24/7</span>
+    <div class="flex gap-2">
+        <a href="tel:+27664774325" class="bg-yellow-400 text-[#0a0f1e] px-4 py-1.5 rounded-full text-xs font-bold"><i class="fas fa-phone-alt"></i> CALL</a>
+        <a href="https://wa.me/27664774325" target="_blank" class="bg-yellow-400 text-[#0a0f1e] px-4 py-1.5 rounded-full text-xs font-bold"><i class="fab fa-whatsapp"></i> CHAT</a>
+    </div>
+</div>
+
+<!-- HEADER -->
+<header class="bg-[#0f172a] border-b border-yellow-500/20 py-2 sticky top-0 z-40">
+    <div class="container mx-auto px-4 flex justify-between items-center">
+        <div class="flex items-center gap-2">
+            <div class="w-10 h-10 bg-yellow-400 rounded-xl flex items-center justify-center text-[#0a0f1e] text-xl"><i class="fas fa-wrench"></i></div>
+            <div>
+                <span class="font-black text-lg tracking-tight text-white">PHILIP'S</span>
+                <span class="block text-[0.65rem] font-medium text-yellow-300/70">plumbing • jhb</span>
+            </div>
+        </div>
+        <nav class="hidden md:flex items-center gap-4 text-sm font-semibold text-gray-200">
+            <a href="index.html" class="hover:text-yellow-400">Home</a>
+            <a href="services.html" class="hover:text-yellow-400">Services</a>
+            <a href="about.html" class="text-yellow-400">About</a>
+            <a href="gallery.html" class="hover:text-yellow-400">Projects</a>
+            <a href="contact.html" class="hover:text-yellow-400">Contact</a>
+        </nav>
+        <div class="hidden md:block">
+            <a href="tel:+27664774325" class="text-yellow-400 font-bold text-sm">066 477 4325</a>
+        </div>
+        <button id="menuBtn" class="block md:hidden text-2xl text-yellow-400 z-50 relative">
+            <i class="fas fa-bars"></i>
+        </button>
+    </div>
+
+    <div id="mobileMenu" class="mobile-menu">
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="about.html">About</a>
+        <a href="gallery.html">Projects</a>
+        <a href="contact.html">Contact</a>
+        <div class="social-buttons">
+            <a href="tel:+27664774325"><i class="fas fa-phone-alt"></i></a>
+            <a href="https://wa.me/27664774325" target="_blank"><i class="fab fa-whatsapp"></i></a>
+        </div>
+    </div>
+</header>
+
+<!-- PAGE HEADER -->
+<section class="bg-[#0f172a] py-10 border-b border-yellow-500/20">
+    <div class="container mx-auto px-4 text-center">
+        <h1 class="text-3xl md:text-5xl font-bold text-white mb-3">About Philip's Plumbing</h1>
+        <p class="text-gray-400 max-w-2xl mx-auto text-sm">Family-owned • PIRB-registered • Serving Joburg since 2013</p>
+    </div>
+</section>
+
+<!-- OUR STORY -->
+<section class="py-16">
+    <div class="container mx-auto px-4">
+        <div class="grid md:grid-cols-2 gap-10 items-center">
+            <div data-aos="fade-right">
+                <span class="badge-gold mb-4 inline-block">OUR STORY</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">From Small Repairs to Joburg's Trusted Plumbers</h2>
+                <p class="text-gray-300 text-sm mb-4">Philip's Plumbing started in 2013 as a one-man operation with a simple mission: provide honest, reliable plumbing services at fair prices. Philip, a qualified plumber with years of experience, built the business on word-of-mouth and customer satisfaction.</p>
+                <p class="text-gray-400 text-sm mb-4">Today, we've grown into a team of 8 certified plumbers, but we've kept our family-owned values. We're still the same company that answers the phone at 2am when your geyser bursts, and still the same company that takes time to explain the problem and your options.</p>
+                <p class="text-gray-400 text-sm">We're proud to be PIRB-registered, fully insured, and trusted by hundreds of homeowners and businesses across Johannesburg.</p>
+            </div>
+            <div class="grid grid-cols-2 gap-3" data-aos="fade-left">
+                <img src="images/Maintenance-Work.jpg" class="rounded-2xl border border-yellow-500/40 h-48 object-cover w-full" alt="Philip working">
+                <img src="images/Geyser-Installations.jpg" class="rounded-2xl border border-yellow-500/40 h-48 object-cover w-full mt-6" alt="Geyser installation">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- MILESTONES -->
+<section class="py-12 bg-[#0f172a]">
+    <div class="container mx-auto px-4">
+        <h2 class="text-2xl md:text-3xl font-bold text-center mb-8">Our Journey in Numbers</h2>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div class="milestone-card" data-aos="fade-up"><span class="text-4xl font-black text-yellow-400">7+</span><p class="text-sm text-gray-300 mt-2">Years Experience</p></div>
+            <div class="milestone-card" data-aos="fade-up" data-aos-delay="50"><span class="text-4xl font-black text-yellow-400">500+</span><p class="text-sm text-gray-300 mt-2">Projects Completed</p></div>
+            <div class="milestone-card" data-aos="fade-up" data-aos-delay="100"><span class="text-4xl font-black text-yellow-400">8</span><p class="text-sm text-gray-300 mt-2">Certified Plumbers</p></div>
+            <div class="milestone-card" data-aos="fade-up" data-aos-delay="150"><span class="text-4xl font-black text-yellow-400">200+</span><p class="text-sm text-gray-300 mt-2">5-Star Reviews</p></div>
+        </div>
+    </div>
+</section>
+
+<!-- OUR VALUES -->
+<section class="py-16">
+    <div class="container mx-auto px-4">
+        <div class="text-center mb-10" data-aos="fade-up">
+            <span class="badge-gold">WHAT WE STAND FOR</span>
+            <h2 class="text-3xl md:text-4xl font-bold text-white mt-3">Our Core Values</h2>
+        </div>
+        <div class="grid md:grid-cols-3 gap-6">
+            <div class="bg-[#0f172a] p-6 rounded-2xl text-center" data-aos="fade-up">
+                <div class="w-16 h-16 bg-yellow-400/20 rounded-full flex items-center justify-center text-2xl text-yellow-400 mx-auto mb-4"><i class="fas fa-handshake"></i></div>
+                <h3 class="text-xl font-bold mb-2">Honesty</h3>
+                <p class="text-gray-400 text-sm">We tell you what needs fixing and what doesn't. No unnecessary repairs, no hidden costs.</p>
+            </div>
+            <div class="bg-[#0f172a] p-6 rounded-2xl text-center" data-aos="fade-up" data-aos-delay="50">
+                <div class="w-16 h-16 bg-yellow-400/20 rounded-full flex items-center justify-center text-2xl text-yellow-400 mx-auto mb-4"><i class="fas fa-clock"></i></div>
+                <h3 class="text-xl font-bold mb-2">Reliability</h3>
+                <p class="text-gray-400 text-sm">We show up when we say we will. 30-minute response time for emergencies.</p>
+            </div>
+            <div class="bg-[#0f172a] p-6 rounded-2xl text-center" data-aos="fade-up" data-aos-delay="100">
+                <div class="w-16 h-16 bg-yellow-400/20 rounded-full flex items-center justify-center text-2xl text-yellow-400 mx-auto mb-4"><i class="fas fa-medal"></i></div>
+                <h3 class="text-xl font-bold mb-2">Quality</h3>
+                <p class="text-gray-400 text-sm">We use premium materials and take pride in workmanship that lasts.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- TEAM -->
+<section class="py-16 bg-[#0f172a]">
+    <div class="container mx-auto px-4">
+        <div class="text-center mb-10">
+            <h2 class="text-3xl font-bold text-white">Meet Our Team</h2>
+            <p class="text-gray-400 text-sm mt-2">Certified, experienced, and friendly</p>
+        </div>
+        <div class="grid md:grid-cols-4 gap-4">
+            <div class="text-center"><div class="w-24 h-24 bg-yellow-400/20 rounded-full mx-auto mb-3 flex items-center justify-center text-3xl text-yellow-400"><i class="fas fa-user-tie"></i></div><h4 class="font-bold">Philip</h4><p class="text-xs text-gray-400">Founder, Master Plumber</p></div>
+            <div class="text-center"><div class="w-24 h-24 bg-yellow-400/20 rounded-full mx-auto mb-3 flex items-center justify-center text-3xl text-yellow-400"><i class="fas fa-user-cog"></i></div><h4 class="font-bold">Johannes</h4><p class="text-xs text-gray-400">Senior Plumber</p></div>
+            <div class="text-center"><div class="w-24 h-24 bg-yellow-400/20 rounded-full mx-auto mb-3 flex items-center justify-center text-3xl text-yellow-400"><i class="fas fa-user-wrench"></i></div><h4 class="font-bold">Thabo</h4><p class="text-xs text-gray-400">Geyser Specialist</p></div>
+            <div class="text-center"><div class="w-24 h-24 bg-yellow-400/20 rounded-full mx-auto mb-3 flex items-center justify-center text-3xl text-yellow-400"><i class="fas fa-user-hard-hat"></i></div><h4 class="font-bold">Mike</h4><p class="text-xs text-gray-400">Drainage Expert</p></div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="py-12 bg-gradient-to-r from-yellow-600 to-yellow-400">
+    <div class="container mx-auto px-4 text-center">
+        <h2 class="text-2xl font-bold text-[#0a0f1e] mb-3">Need a Trusted Plumber?</h2>
+        <a href="https://wa.me/27664774325" target="_blank" class="inline-block bg-[#0a0f1e] hover:bg-black text-white font-bold px-8 py-4 rounded-full text-lg transition"><i class="fab fa-whatsapp mr-2"></i> CHAT WITH PHILIP</a>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-[#0a0f1e] border-t border-yellow-500/20 py-10">
+    <div class="container mx-auto px-4">
+        <div class="grid md:grid-cols-4 gap-8 text-sm">
+            <div><div class="flex items-center gap-2 mb-3"><div class="w-8 h-8 bg-yellow-400 rounded-lg flex items-center justify-center text-[#0a0f1e]"><i class="fas fa-wrench text-sm"></i></div><span class="font-black text-white">PHILIP'S PLUMBING</span></div><p class="text-gray-400 text-xs">PIRB-registered, family-owned emergency plumbing in Johannesburg since 2013.</p></div>
+            <div><h5 class="font-bold text-white mb-3 text-sm">Quick Links</h5><ul class="space-y-2 text-xs text-gray-400"><li><a href="index.html">Home</a></li><li><a href="services.html">Services</a></li><li><a href="about.html">About</a></li><li><a href="gallery.html">Gallery</a></li></ul></div>
+            <div><h5 class="font-bold text-white mb-3 text-sm">Service Areas</h5><ul class="space-y-2 text-xs text-gray-400"><li>Johannesburg</li><li>Sandton</li><li>Midrand</li><li>Randburg</li></ul></div>
+            <div><h5 class="font-bold text-white mb-3 text-sm">Contact</h5><p class="text-xs text-gray-400 mb-2"><i class="fas fa-phone-alt text-yellow-400 mr-2"></i> <a href="tel:+27664774325">066 477 4325</a></p><p class="text-xs text-gray-400"><i class="fab fa-whatsapp text-yellow-400 mr-2"></i> <a href="https://wa.me/27664774325" target="_blank">WhatsApp 24/7</a></p></div>
+        </div>
+        <div class="border-t border-yellow-500/20 mt-8 pt-5 text-center text-xs text-gray-400"><p>© 2026 Philip's Plumbing – All Rights Reserved | Designed By Dascomsoft</p></div>
+    </div>
+</footer>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init({ once: true, duration: 600 });
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    menuBtn.addEventListener('click', function() {
+        const isOpen = mobileMenu.classList.contains('menu-open');
+        mobileMenu.classList.toggle('menu-open');
+        menuBtn.innerHTML = isOpen ? '<i class="fas fa-bars"></i>' : '<i class="fas fa-times"></i>';
+    });
+    document.querySelectorAll('.mobile-menu a').forEach(link => {
+        link.addEventListener('click', function() {
+            mobileMenu.classList.remove('menu-open');
+            menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+        });
+    });
+</script>
+</body>
+</html>
